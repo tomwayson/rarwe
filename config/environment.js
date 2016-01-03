@@ -1,11 +1,20 @@
 /* jshint node: true */
-
+var contentSecurityPolicy = {
+  'default-src': "'none'",
+  'script-src': "'self'",
+  'font-src': "'self'",
+  'connect-src': "'self' localhost:* json-api.rockandrollwithemberjs.com:*",
+  'img-src': "'self'",
+  'style-src': "'self' 'unsafe-inline'",
+  'media-src': "'self'"
+};
 module.exports = function(environment) {
   var ENV = {
     modulePrefix: 'rarwe',
     environment: environment,
     baseURL: '/',
     locationType: 'auto',
+    apiHost: 'http://json-api.rockandrollwithemberjs.com',
     EmberENV: {
       FEATURES: {
         // Here you can enable experimental features on an ember canary build
@@ -16,7 +25,8 @@ module.exports = function(environment) {
     APP: {
       // Here you can pass flags/options to your application instance
       // when it is created
-    }
+    },
+    contentSecurityPolicy: contentSecurityPolicy
   };
 
   if (environment === 'development') {
