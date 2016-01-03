@@ -20,7 +20,14 @@ export default Ember.Controller.extend({
     updateRating: function(params) {
       var song = params.item,
         rating = params.rating;
+
+
+      // clear rating if user clicked same one
+      if (song.get('rating') === rating) {
+        rating = 0;
+      }
       song.set('rating', rating);
+      song.save();
     }
   }
 });
